@@ -1,0 +1,31 @@
+{
+  "name": "tnrn-umeng",
+  "description": "umeng sdk for react-native",
+  "main": "index.js",
+  "author": "winter <winterw201501@gmail.com>",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "homepage": "https://github.com/tnrn/tnrn-umeng",
+  "bugs": "https://github.com/tnrn/tnrn-umeng/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tnrn/tnrn-umeng"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "react-component",
+    "tnrn",
+    "umeng",
+    "umeng-push",
+    "tnrn-umeng",
+    "tnrn-umeng-push"
+  ],
+  "peerDependencies": {
+    "react": ">=16.0.0",
+    "react-native": ">=0.50"
+  },
+  "license": "MIT"
+}
