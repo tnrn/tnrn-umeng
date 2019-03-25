@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8043E562248C9330073C06D /* RNUmeng.m in Sources */ = {isa = PBXBuildFile; fileRef = C8043E552248C9330073C06D /* RNUmeng.m */; };
+		C8043E572248CBA60073C06D /* RNUmeng.h in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = C8043E542248C9330073C06D /* RNUmeng.h */; };
 		C83CD730221FDA900012BEDC /* UMPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83CD72E221FDA900012BEDC /* UMPush.framework */; };
 		C83CD731221FDA900012BEDC /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83CD72F221FDA900012BEDC /* UMCommon.framework */; };
 		C83CD735221FDACB0012BEDC /* RNUmengPush.m in Sources */ = {isa = PBXBuildFile; fileRef = C83CD734221FDACB0012BEDC /* RNUmengPush.m */; };
 		C841B949223CF8B200F9229A /* UMAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C841B948223CF8B200F9229A /* UMAnalytics.framework */; };
 		C841B94D223CF8D700F9229A /* RNUmengAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = C841B94C223CF8D700F9229A /* RNUmengAnalytics.m */; };
-		C841B94E223CF96400F9229A /* RNUmengAnalytics.h in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = C841B94B223CF8D700F9229A /* RNUmengAnalytics.h */; };
-		C8A6CA0D222287E700F639FA /* RNUmengPush.h in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = C83CD733221FDACB0012BEDC /* RNUmengPush.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +23,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				C841B94E223CF96400F9229A /* RNUmengAnalytics.h in Copy Files (2 items) */,
-				C8A6CA0D222287E700F639FA /* RNUmengPush.h in Copy Files (2 items) */,
+				C8043E572248CBA60073C06D /* RNUmeng.h in Copy Files (2 items) */,
 			);
 			name = "Copy Files (2 items)";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNUmeng.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNUmeng.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8043E542248C9330073C06D /* RNUmeng.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNUmeng.h; sourceTree = "<group>"; };
+		C8043E552248C9330073C06D /* RNUmeng.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNUmeng.m; sourceTree = "<group>"; };
 		C83CD72E221FDA900012BEDC /* UMPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMPush.framework; sourceTree = "<group>"; };
 		C83CD72F221FDA900012BEDC /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
 		C83CD733221FDACB0012BEDC /* RNUmengPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNUmengPush.h; sourceTree = "<group>"; };
@@ -67,6 +68,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				C8043E542248C9330073C06D /* RNUmeng.h */,
+				C8043E552248C9330073C06D /* RNUmeng.m */,
 				C841B94A223CF8D700F9229A /* RNUmengAnalytics */,
 				C83CD732221FDACB0012BEDC /* RNUmengPush */,
 				C83CD72D221FDA900012BEDC /* Framework */,
@@ -160,6 +163,7 @@
 			files = (
 				C841B94D223CF8D700F9229A /* RNUmengAnalytics.m in Sources */,
 				C83CD735221FDACB0012BEDC /* RNUmengPush.m in Sources */,
+				C8043E562248C9330073C06D /* RNUmeng.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

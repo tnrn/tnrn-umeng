@@ -24,11 +24,10 @@
 #endif
 
 @interface RNUmengPush : RCTEventEmitter <RCTBridgeModule>
-/** 初始化友盟所有组件产品
- @param appkey 开发者在友盟官网申请的appkey.
+/** 初始化友盟 推送服务
  @param launchOptions didFinishLaunchingWithOptions:launchOptions
  */
-+ (void)registerWithAppkey:(NSString *)appkey launchOptions:(NSDictionary *)launchOptions;
++ (void)registerPushWithlaunchOptions:(NSDictionary *)launchOptions;
 + (void)didRegisterDeviceToken:(NSData *)deviceToken;
 + (void)didReceiveRemoteNotification:(NSDictionary *)userInfo applicationState:(UIApplicationState)state;
 @end

@@ -8,7 +8,6 @@
 
 #import "RNUmengPush.h"
 #import <UMPush/UMessage.h>
-#import <UMCommon/UMCommon.h>
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -164,12 +163,8 @@ RCT_EXPORT_MODULE();
 
 #pragma mark - pulic method
 
-+ (void)registerWithAppkey:(NSString *)appkey launchOptions:(NSDictionary *)launchOptions {
-#ifdef DEBUG
-    //开发者需要显式的调用此函数，日志系统才能工作
-    [UMConfigure setLogEnabled:YES];
-#endif
-    [UMConfigure initWithAppkey:appkey channel:nil];
++ (void)registerPushWithlaunchOptions:(NSDictionary *)launchOptions {
+
     // 设置APP运行时，收到通知不弹窗
     [UMessage setAutoAlert:NO];
     
