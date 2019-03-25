@@ -11,7 +11,7 @@
 [license-badge]: https://img.shields.io/dub/l/vibe-d.svg
 [license]: https://raw.githubusercontent.com/tnrn/tnrn-umeng/master/LICENSE
 
-友盟推送 [React Native][rn].
+友盟 推送 & 统计 [React Native][rn].
 
 ## Getting Started
 
@@ -87,12 +87,12 @@ Use in AppDelegate.m for iOS
 
 ```
 
-#import <RNUmengPush/RNUmengPush.h>
+#import <RNUmeng/RNUmeng.h>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   ...
 
-  [RNUmengPush registerWithAppkey:UmengAppKey launchOptions:launchOptions];
+  [RNUmeng registerWithAppkey:UmengAppKey launchOptions:launchOptions];
 
   ...
 }
@@ -100,19 +100,19 @@ Use in AppDelegate.m for iOS
 #pragma mark - push
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  [RNUmengPush didRegisterDeviceToken:deviceToken];
+  [RNUmeng didRegisterDeviceToken:deviceToken];
 }
 
 // iOS10 以下
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-  [RNUmengPush didReceiveRemoteNotification:userInfo applicationState:application.applicationState];
+  [RNUmeng didReceiveRemoteNotification:userInfo applicationState:application.applicationState];
   completionHandler(UIBackgroundFetchResultNewData);
 }
 
 ```
 
 
-Use library in *.js
+Use library with Push service in *.js
 
 ```
 import UMPush from 'tnrn-umeng'
