@@ -38,8 +38,8 @@ public class RNUMPushPackage implements ReactPackage {
         return modules;
     }
 
-    @Override
+//    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
-        return Collections.emptyList();
+        return null;
     }
 }
