@@ -3,7 +3,7 @@
   "description": "umeng sdk for react-native",
   "main": "index.js",
   "author": "winter <winterw201501@gmail.com>",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "test": "npm run test"
   },
