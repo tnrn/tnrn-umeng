@@ -1,8 +1,10 @@
 package com.tnrn.UMPush;
 
+import android.app.Activity;
 import android.app.Application;
 import android.app.Notification;
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 
 import com.facebook.react.common.build.ReactBuildConfig;
 import com.umeng.commonsdk.UMConfigure;
+import com.umeng.commonsdk.debug.E;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.MsgConstant;
 import com.umeng.message.PushAgent;
@@ -33,7 +36,7 @@ public class RNUMengPushHelper {
     private static PushEventCallBack mClickCallBack; // 点击通知事件回调
 
     private static PushEventCallBack mMsgCallBack; // 接受到消息事件回调
-    private static PushEventCallBack mAuthCallBack;
+    private static com.tnrn.UMPush.PushEventCallBack mAuthCallBack;
 
 
     public static void setMsgCallBack(PushEventCallBack mMsgCallBack) {
@@ -54,11 +57,34 @@ public class RNUMengPushHelper {
 
 
     public static void initUpush(Context context) {
-        RNUMConfigure.init(context, "5533553067e58e1e64000d9b", "", 0, "b71531b85b8ffd664dcbaeaa416bab4c");
+        RNUMConfigure.init(context, "5533553067e58e1e64000d9b", "", UMConfigure.DEVICE_TYPE_PHONE, "b71531b85b8ffd664dcbaeaa416bab4c");
         MiPushRegistar.register(context, "2882303761517334391", "5221733465391");
         HuaWeiRegister.register((Application) context);
 
+        onAppStart((Application)context);
+
+        try {
+            UMConfigure.setLogEnabled(BuildConfig.DEBUG);
+        } catch (Exception e) {
+            Log.d("avery_zjz", "initUpush: " + e.toString());
+        }
+
         PushAgent mPushAgent = PushAgent.getInstance(context);
+        // 注册推送服务 每次调用register都会回调该接口
+        Log.d("avery_zjz", "init U push: register");
+        mPushAgent.register(new IUmengRegisterCallback() {
+            @Override
+            public void onSuccess(String deviceToken) {
+                Log.e("avery_zjz", "device token: " + deviceToken);
+            }
+
+            @Override
+            public void onFailure(String s, String s1) {
+                Log.e("avery_zjz", "register failed: " + s + " " + s1);
+            }
+        });
+
+
         handler = new Handler(context.getMainLooper());
 
         //sdk开启通知声音
@@ -79,7 +105,7 @@ public class RNUMengPushHelper {
             public void dealWithCustomMessage(final Context context, final UMessage msg) {
                 Log.e("avery_zjz:cus message", msg.text);
                 if (mMsgCallBack != null) {
-                    mMsgCallBack.onCallBack(EventConstant.RECEIVE_MSG, msg);
+                    mMsgCallBack.onCallBack(com.tnrn.UMPush.EventConstant.RECEIVE_MSG, msg);
                 }
                 handler.post(new Runnable() {
 
@@ -109,7 +135,7 @@ public class RNUMengPushHelper {
                 Log.e("avery_zjz 通知栏", msg.text);
                 Log.e("avery_zjz mMsgCallBack", ((Boolean) (mMsgCallBack != null)).toString());
                 if (mMsgCallBack != null) {
-                    mMsgCallBack.onCallBack(EventConstant.RECEIVE_MSG, msg);
+                    mMsgCallBack.onCallBack(com.tnrn.UMPush.EventConstant.RECEIVE_MSG, msg);
                 }
                 switch (msg.builder_id) {
                     case 1:
@@ -166,21 +192,50 @@ public class RNUMengPushHelper {
 
         // mPushAgent.setPushIntentServiceClass(YouMengPushIntentService.class);
 
-        // 注册推送服务 每次调用register都会回调该接口
-        mPushAgent.register(new IUmengRegisterCallback() {
-            @Override
-            public void onSuccess(String deviceToken) {
-                Log.e("avery_zjz", "device token: " + deviceToken);
-            }
 
-            @Override
-            public void onFailure(String s, String s1) {
-                Log.e("avery_zjz", "register failed: " + s + " " + s1);
-            }
-        });
         if (ReactBuildConfig.DEBUG) {
             UMConfigure.getTestDeviceInfo(context);
         }
+    }
+
+
+    private static void onAppStart(final Application application) {
+        application.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+                PushAgent.getInstance(application).onAppStart();
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+
+            }
+        });
     }
 }
 

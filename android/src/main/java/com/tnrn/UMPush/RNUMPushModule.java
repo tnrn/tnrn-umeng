@@ -28,8 +28,6 @@ import com.umeng.message.common.inter.ITagManager;
 import com.umeng.message.entity.UMessage;
 import com.umeng.message.tag.TagManager;
 
-import org.json.JSONObject;
-
 /**
  * Created by wangfei on 17/8/30
  */

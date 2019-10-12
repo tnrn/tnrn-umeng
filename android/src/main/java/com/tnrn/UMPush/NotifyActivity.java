@@ -26,6 +26,7 @@ public class NotifyActivity extends UmengNotifyClickActivity {
         Intent newIntent = new Intent();
 //        newIntent.setComponent(new ComponentName("com.rongxin.wellloan", "com.rongxin.wellloan.MainActivity"));
 
+        Log.i("avery_zjz", "准备打开app");
         newIntent.setClassName("com.rongxin.wellloan", "com.rongxin.wellloan.MainActivity");
 
         this.startActivity(newIntent);
