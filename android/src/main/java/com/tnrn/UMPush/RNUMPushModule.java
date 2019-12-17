@@ -245,11 +245,15 @@ public class RNUMPushModule extends ReactContextBaseJavaModule implements PushEv
 
     @ReactMethod
     public void appInfo(final Callback successCallback) {
-        String pkgName = context.getPackageName();
-        String info = String.format("DeviceToken:%s\n" + "SdkVersion:%s\nAppVersionCode:%s\nAppVersionName:%s",
-                mPushAgent.getRegistrationId(), MsgConstant.SDK_VERSION,
-                UmengMessageDeviceConfig.getAppVersionCode(context), UmengMessageDeviceConfig.getAppVersionName(context));
-        successCallback.invoke("应用包名:" + pkgName + "\n" + info);
+        try {
+            String pkgName = context.getPackageName();
+            String info = String.format("DeviceToken:%s\n" + "SdkVersion:%s\nAppVersionCode:%s\nAppVersionName:%s",
+                    mPushAgent.getRegistrationId(), MsgConstant.SDK_VERSION,
+                    UmengMessageDeviceConfig.getAppVersionCode(context), UmengMessageDeviceConfig.getAppVersionName(context));
+            successCallback.invoke("应用包名:" + pkgName + "\n" + info);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private WritableMap resultToMap(ITagManager.Result result) {
